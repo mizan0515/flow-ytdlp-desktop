@@ -1,0 +1,5903 @@
+{
+  "version": "2026.10.21",
+  "source": "https://github.com/yt-dlp/yt-dlp/tree/2026.10.21",
+  "options": [
+    {
+      "flag": "--format",
+      "flags": [
+        "--format",
+        "-f"
+      ],
+      "label": "영상·음성 형식 선택식",
+      "group": "영상 형식",
+      "help": "Video format code, see \"FORMAT SELECTION\" for more details",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--format-sort",
+      "flags": [
+        "--format-sort",
+        "-S"
+      ],
+      "label": "형식 정렬 기준",
+      "group": "영상 형식",
+      "help": "Sort the formats by the fields given, see \"Sorting Formats\" for more details",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SORTORDER",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--output",
+      "flags": [
+        "--output",
+        "-o"
+      ],
+      "label": "파일명 템플릿",
+      "group": "파일·인증",
+      "help": "Output filename template; see \"OUTPUT TEMPLATE\" for details",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[TYPES:]TEMPLATE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--paths",
+      "flags": [
+        "--paths",
+        "-P"
+      ],
+      "label": "저장 경로",
+      "group": "파일·인증",
+      "help": "The paths where the files should be downloaded. Specify the type of file and the path separated by a colon \":\". All the same TYPES as --output are supported. Additionally, you can also provide \"home\" (default) and \"temp\" paths. All intermediary files are first downloaded to the temp path and then the final files are moved over to the home path after download is finished. This option is ignored if --output is an absolute path",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[TYPES:]PATH",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--extract-audio",
+      "flags": [
+        "--extract-audio",
+        "-x"
+      ],
+      "label": "오디오 추출",
+      "group": "후처리",
+      "help": "Convert video files to audio-only files (requires ffmpeg and ffprobe)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--audio-format",
+      "flags": [
+        "--audio-format"
+      ],
+      "label": "오디오 형식",
+      "group": "후처리",
+      "help": "Format to convert the audio to when -x is used. (currently supported: best (default), aac, alac, flac, m4a, mp3, opus, vorbis, wav). You can specify multiple rules using similar syntax as --remux-video",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--audio-quality",
+      "flags": [
+        "--audio-quality"
+      ],
+      "label": "오디오 품질",
+      "group": "후처리",
+      "help": "Specify ffmpeg audio quality to use when converting the audio with -x. Insert a value between 0 (best) and 10 (worst) for VBR or a specific bitrate like 128K (default 5)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "QUALITY",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-subs",
+      "flags": [
+        "--write-subs",
+        "--write-srt"
+      ],
+      "label": "자막 저장",
+      "group": "자막",
+      "help": "Write subtitle file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-auto-subs",
+      "flags": [
+        "--write-auto-subs",
+        "--write-automatic-subs"
+      ],
+      "label": "자동 자막 저장",
+      "group": "자막",
+      "help": "Write automatically generated subtitle file (Alias: --write-automatic-subs)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sub-langs",
+      "flags": [
+        "--sub-langs",
+        "--srt-langs"
+      ],
+      "label": "자막 언어",
+      "group": "자막",
+      "help": "Languages of the subtitles to download (can be regex) or \"all\" separated by commas, e.g. --sub-langs \"en.*,ja\" (where \"en.*\" is a regex pattern that matches \"en\" followed by 0 or more of any character). You can prefix the language code with a \"-\" to exclude it from the requested languages, e.g. --sub-langs all,-live_chat. Use --list-subs for a list of available language tags",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "LANGS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--embed-subs",
+      "flags": [
+        "--embed-subs"
+      ],
+      "label": "자막 내장",
+      "group": "후처리",
+      "help": "Embed subtitles in the video (only for mp4, webm and mkv videos)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--embed-thumbnail",
+      "flags": [
+        "--embed-thumbnail"
+      ],
+      "label": "표지 내장",
+      "group": "후처리",
+      "help": "Embed thumbnail in the video as cover art",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--embed-metadata",
+      "flags": [
+        "--embed-metadata",
+        "--add-metadata"
+      ],
+      "label": "메타데이터 내장",
+      "group": "후처리",
+      "help": "Embed metadata to the video file. Also embeds chapters/infojson if present unless --no-embed-chapters/--no-embed-info-json are used (Alias: --add-metadata)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--cookies",
+      "flags": [
+        "--cookies"
+      ],
+      "label": "쿠키 파일",
+      "group": "파일·인증",
+      "help": "Netscape formatted file to read cookies from and dump cookie jar in",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--cookies-from-browser",
+      "flags": [
+        "--cookies-from-browser"
+      ],
+      "label": "브라우저 쿠키 사용",
+      "group": "파일·인증",
+      "help": "The name of the browser to load cookies from. Currently supported browsers are: brave, chrome, chromium, edge, firefox, opera, safari, vivaldi, whale. Optionally, the KEYRING used for decrypting Chromium cookies on Linux, the name/path of the PROFILE to load cookies from, and the CONTAINER name (if Firefox) (\"none\" for no container) can be given with their respective separators. By default, all containers of the most recently accessed profile are used. Currently supported keyrings are: basictext, gnomekeyring, kwallet, kwallet5, kwallet6",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "BROWSER[+KEYRING][:PROFILE][::CONTAINER]",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--username",
+      "flags": [
+        "--username",
+        "-u"
+      ],
+      "label": "사용자 이름",
+      "group": "인증",
+      "help": "Login with this account ID",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "USERNAME",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--password",
+      "flags": [
+        "--password",
+        "-p"
+      ],
+      "label": "비밀번호",
+      "group": "인증",
+      "help": "Account password. If this option is left out, yt-dlp will ask interactively",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PASSWORD",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--proxy",
+      "flags": [
+        "--proxy"
+      ],
+      "label": "프록시",
+      "group": "네트워크",
+      "help": "Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy, specify a proper scheme, e.g. socks5://user:pass@127.0.0.1:1080/. Pass in an empty string (--proxy \"\") for direct connection",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "URL",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--download-sections",
+      "flags": [
+        "--download-sections"
+      ],
+      "label": "시간·챕터 구간",
+      "group": "다운로드",
+      "help": "Download only chapters that match the regular expression. A \"*\" prefix denotes time-range instead of chapter. Negative timestamps are calculated from the end. \"*from-url\" can be used to download between the \"start_time\" and \"end_time\" extracted from the URL. Needs ffmpeg. This option can be used multiple times to download multiple sections, e.g. --download-sections \"*10:15-inf\" --download-sections \"intro\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "REGEX",
+      "choices": [],
+      "repeatable": true,
+      "action": "append",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--playlist-items",
+      "flags": [
+        "--playlist-items",
+        "-I"
+      ],
+      "label": "재생목록 항목",
+      "group": "항목·필터",
+      "help": "Comma-separated playlist_index of the items to download. You can specify a range using \"[START]:[STOP][:STEP]\". For backward compatibility, START-STOP is also supported. Use negative indices to count from the right and negative STEP to download in reverse order. E.g. \"-I 1:3,7,-5::2\" used on a playlist of size 15 will download the items at index 1,2,3,7,11,13,15",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "ITEM_SPEC",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--download-archive",
+      "flags": [
+        "--download-archive"
+      ],
+      "label": "중복 다운로드 기록",
+      "group": "항목·필터",
+      "help": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--concurrent-fragments",
+      "flags": [
+        "--concurrent-fragments",
+        "-N"
+      ],
+      "label": "동시 조각 수",
+      "group": "다운로드",
+      "help": "Number of fragments of a dash/hlsnative video that should be downloaded concurrently (default is 1)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "N",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--limit-rate",
+      "flags": [
+        "--limit-rate",
+        "--rate-limit",
+        "-r"
+      ],
+      "label": "다운로드 속도 제한",
+      "group": "다운로드",
+      "help": "Maximum download rate in bytes per second, e.g. 50K or 4.2M",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RATE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--retries",
+      "flags": [
+        "--retries",
+        "-R"
+      ],
+      "label": "재시도 횟수",
+      "group": "다운로드",
+      "help": "Number of retries (default is 10), or \"infinite\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RETRIES",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--remux-video",
+      "flags": [
+        "--remux-video"
+      ],
+      "label": "컨테이너 변경",
+      "group": "후처리",
+      "help": "Remux the video into another container if necessary (currently supported: avi, flv, gif, mkv, mov, mp4, webm, aac, aiff, alac, flac, m4a, mka, mp3, ogg, opus, vorbis, wav). If the target container does not support the video/audio codec, remuxing will fail. You can specify multiple rules; e.g. \"aac>m4a/mov>mp4/mkv\" will remux aac to m4a, mov to mp4 and anything else to mkv",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--recode-video",
+      "flags": [
+        "--recode-video"
+      ],
+      "label": "영상 재인코딩",
+      "group": "후처리",
+      "help": "Re-encode the video into another format if necessary. The syntax and supported formats are the same as --remux-video",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--split-chapters",
+      "flags": [
+        "--split-chapters",
+        "--split-tracks"
+      ],
+      "label": "챕터별 파일 분리",
+      "group": "후처리",
+      "help": "Split video into multiple files based on internal chapters. The \"chapter:\" prefix can be used with \"--paths\" and \"--output\" to set the output filename for the split files. See \"OUTPUT TEMPLATE\" for details",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sponsorblock-remove",
+      "flags": [
+        "--sponsorblock-remove"
+      ],
+      "label": "SponsorBlock 구간 제거",
+      "group": "SponsorBlock",
+      "help": "SponsorBlock categories to be removed from the video file, separated by commas. If a category is present in both mark and remove, remove takes precedence. The syntax and available categories are the same as for --sponsorblock-mark except that \"default\" refers to \"all,-filler\" and poi_highlight, chapter are not available",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "CATS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--extractor-args",
+      "flags": [
+        "--extractor-args"
+      ],
+      "label": "사이트별 추출 인수",
+      "group": "추출기",
+      "help": "Pass ARGS arguments to the IE_KEY extractor. See \"EXTRACTOR ARGUMENTS\" for details. You can use this option multiple times to give arguments for different extractors",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "IE_KEY:ARGS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--exec",
+      "flags": [
+        "--exec"
+      ],
+      "label": "외부 명령 실행",
+      "group": "후처리",
+      "help": "Execute a command, optionally prefixed with when to execute it, separated by a \":\". Supported values of \"WHEN\" are the same as that of --use-postprocessor (default: after_move). The same syntax as the output template can be used to pass any field as arguments to the command; however, for security reasons the only allowed conversions are: \"i\"/\"d\" (signed integer decimal), \"f\" (floating-point decimal) and \"q\" (shell-quoted). If no fields are passed, %(filepath,_filename|)q is appended to the end of the command. This option can be used multiple times",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[WHEN:]CMD",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": true,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--plugin-dirs",
+      "flags": [
+        "--plugin-dirs"
+      ],
+      "label": "플러그인 폴더",
+      "group": "일반·확장",
+      "help": "Path to an additional directory to search for plugins. This option can be used multiple times to add multiple directories. Use \"default\" to search the default plugin directories (default)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "DIR",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--config-locations",
+      "flags": [
+        "--config-locations"
+      ],
+      "label": "설정 파일 불러오기",
+      "group": "일반·확장",
+      "help": "Location of the main configuration file; either the path to the config or its containing directory (\"-\" for stdin). Can be used multiple times and inside other configuration files",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PATH",
+      "choices": [],
+      "repeatable": true,
+      "action": "append",
+      "sensitive": true,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--print",
+      "flags": [
+        "--print",
+        "-O"
+      ],
+      "label": "정보 출력 템플릿",
+      "group": "조회·진단",
+      "help": "Field name or output template to print to screen, optionally prefixed with when to print it, separated by a \":\". Supported values of \"WHEN\" are the same as that of --use-postprocessor (default: video). Implies --quiet. Implies --simulate unless --no-simulate or later stages of WHEN are used. This option can be used multiple times",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[WHEN:]TEMPLATE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--dump-single-json",
+      "flags": [
+        "--dump-single-json",
+        "-J"
+      ],
+      "label": "메타데이터 JSON 조회",
+      "group": "조회·진단",
+      "help": "Quiet, but print JSON information for each URL or infojson passed. Simulate unless --no-simulate is used. If the URL refers to a playlist, the whole playlist information is dumped in a single line",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--simulate",
+      "flags": [
+        "--simulate",
+        "-s"
+      ],
+      "label": "다운로드 없이 확인",
+      "group": "조회·진단",
+      "help": "Do not download the video and do not write anything to disk",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--skip-download",
+      "flags": [
+        "--skip-download",
+        "--no-download"
+      ],
+      "label": "미디어 다운로드 생략",
+      "group": "조회·진단",
+      "help": "Do not download the video but write all related files (Alias: --no-download)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--update-to",
+      "flags": [
+        "--update-to"
+      ],
+      "label": "엔진 버전 변경",
+      "group": "일반·확장",
+      "help": "Upgrade/downgrade to a specific version. CHANNEL can be a repository as well. CHANNEL and TAG default to \"stable\" and \"latest\" respectively if omitted; See \"UPDATE\" for details. Supported channels: stable, nightly, master",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[CHANNEL]@[TAG]",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--list-formats",
+      "flags": [
+        "--list-formats",
+        "-F"
+      ],
+      "label": "형식 목록 조회",
+      "group": "영상 형식",
+      "help": "List available formats of each video. Simulate unless --no-simulate is used",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--list-subs",
+      "flags": [
+        "--list-subs"
+      ],
+      "label": "자막 목록 조회",
+      "group": "자막",
+      "help": "List available subtitles of each video. Simulate unless --no-simulate is used",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--live-from-start",
+      "flags": [
+        "--live-from-start"
+      ],
+      "label": "라이브 처음부터",
+      "group": "일반·확장",
+      "help": "Download livestreams from the start. Currently experimental and only supported for YouTube, Twitch, TVer, and mellow-fan",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--wait-for-video",
+      "flags": [
+        "--wait-for-video"
+      ],
+      "label": "방송 시작 대기",
+      "group": "일반·확장",
+      "help": "Wait for scheduled streams to become available. Pass the minimum number of seconds (or range) to wait between retries",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "MIN[-MAX]",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ffmpeg-location",
+      "flags": [
+        "--ffmpeg-location"
+      ],
+      "label": "FFmpeg 위치",
+      "group": "후처리",
+      "help": "Location of the ffmpeg binary; either the path to the binary or its containing directory",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PATH",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--js-runtimes",
+      "flags": [
+        "--js-runtimes"
+      ],
+      "label": "JavaScript 실행 환경",
+      "group": "일반·확장",
+      "help": "Additional JavaScript runtime to enable, with an optional location for the runtime (either the path to the binary or its containing directory). This option can be used multiple times to enable multiple runtimes. Supported runtimes are (in order of priority, from highest to lowest): deno, node, quickjs, bun. Only \"deno\" is enabled by default. The highest priority runtime that is both enabled and available will be used. In order to use a lower priority runtime when \"deno\" is available, --no-js-runtimes needs to be passed before enabling other runtimes",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RUNTIME[:PATH]",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--match-filters",
+      "flags": [
+        "--match-filters"
+      ],
+      "label": "다운로드 조건식",
+      "group": "항목·필터",
+      "help": "Generic video filter. Any \"OUTPUT TEMPLATE\" field can be compared with a number or a string using the operators defined in \"Filtering Formats\". You can also simply specify a field to match if the field is present, use \"!field\" to check if the field is not present, and \"&\" to check multiple conditions. Use a \"\\\" to escape \"&\" or quotes if needed. If used multiple times, the filter matches if at least one of the conditions is met. E.g. --match-filters !is_live --match-filters \"like_count>?100 & description~='(?i)\\bcats \\& dogs\\b'\" matches only videos that are not live OR those that have a like count more than 100 (or the like field is not available) and also has a description that contains the phrase \"cats & dogs\" (caseless). Use \"--match-filters -\" to interactively ask whether to download each video",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FILTER",
+      "choices": [],
+      "repeatable": true,
+      "action": "append",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--dateafter",
+      "flags": [
+        "--dateafter"
+      ],
+      "label": "이 날짜 이후",
+      "group": "항목·필터",
+      "help": "Download only videos uploaded on or after this date. The date formats accepted are the same as --date",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "DATE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--datebefore",
+      "flags": [
+        "--datebefore"
+      ],
+      "label": "이 날짜 이전",
+      "group": "항목·필터",
+      "help": "Download only videos uploaded on or before this date. The date formats accepted are the same as --date",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "DATE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--help",
+      "flags": [
+        "--help",
+        "-h"
+      ],
+      "label": "help",
+      "group": "일반·확장",
+      "help": "Print this help text and exit",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--version",
+      "flags": [
+        "--version"
+      ],
+      "label": "version",
+      "group": "일반·확장",
+      "help": "Print program version and exit",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "version",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--update",
+      "flags": [
+        "--update",
+        "-U"
+      ],
+      "label": "update",
+      "group": "일반·확장",
+      "help": "Check if updates are available. You installed yt-dlp from a manual build or with a package manager; Use that to update",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--no-update",
+      "flags": [
+        "--no-update"
+      ],
+      "label": "no update",
+      "group": "일반·확장",
+      "help": "Do not check for updates (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ignore-errors",
+      "flags": [
+        "--ignore-errors",
+        "-i"
+      ],
+      "label": "ignore errors",
+      "group": "일반·확장",
+      "help": "Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-abort-on-error",
+      "flags": [
+        "--no-abort-on-error"
+      ],
+      "label": "no abort on error",
+      "group": "일반·확장",
+      "help": "Continue with next video on download errors; e.g. to skip unavailable videos in a playlist (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--abort-on-error",
+      "flags": [
+        "--abort-on-error",
+        "--no-ignore-errors"
+      ],
+      "label": "abort on error",
+      "group": "일반·확장",
+      "help": "Abort downloading of further videos if an error occurs (Alias: --no-ignore-errors)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--list-extractors",
+      "flags": [
+        "--list-extractors"
+      ],
+      "label": "list extractors",
+      "group": "일반·확장",
+      "help": "List all supported extractors and exit",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--extractor-descriptions",
+      "flags": [
+        "--extractor-descriptions"
+      ],
+      "label": "extractor descriptions",
+      "group": "일반·확장",
+      "help": "Output descriptions of all supported extractors and exit",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--use-extractors",
+      "flags": [
+        "--use-extractors",
+        "--ies"
+      ],
+      "label": "use extractors",
+      "group": "일반·확장",
+      "help": "Extractor names to use separated by commas. You can also use regexes, \"all\", \"default\" and \"end\" (end URL matching); e.g. --ies \"holodex.*,end,youtube\". Prefix the name with a \"-\" to exclude it, e.g. --ies default,-generic. Use --list-extractors for a list of extractor names. (Alias: --ies)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NAMES",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--default-search",
+      "flags": [
+        "--default-search"
+      ],
+      "label": "default search",
+      "group": "일반·확장",
+      "help": "Use this prefix for unqualified URLs. E.g. \"gvsearch2:python\" downloads two videos from google videos for the search term \"python\". Use the value \"auto\" to let yt-dlp guess (\"auto_warning\" to emit a warning when guessing). \"error\" just throws an error. The default value \"fixup_error\" repairs broken URLs, but emits an error if this is not possible instead of searching",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PREFIX",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ignore-config",
+      "flags": [
+        "--ignore-config",
+        "--no-config"
+      ],
+      "label": "ignore config",
+      "group": "일반·확장",
+      "help": "Don't load any more configuration files except those given to --config-locations. For backward compatibility, if this option is found inside the system configuration file, the user configuration is not loaded. (Alias: --no-config)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-config-locations",
+      "flags": [
+        "--no-config-locations"
+      ],
+      "label": "no config locations",
+      "group": "일반·확장",
+      "help": "Do not load any custom configuration files (default). When given inside a configuration file, ignore all previous --config-locations defined in the current file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-plugin-dirs",
+      "flags": [
+        "--no-plugin-dirs"
+      ],
+      "label": "no plugin dirs",
+      "group": "일반·확장",
+      "help": "Clear plugin directories to search, including defaults and those provided by previous --plugin-dirs",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-js-runtimes",
+      "flags": [
+        "--no-js-runtimes"
+      ],
+      "label": "no js runtimes",
+      "group": "일반·확장",
+      "help": "Clear JavaScript runtimes to enable, including defaults and those provided by previous --js-runtimes",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--remote-components",
+      "flags": [
+        "--remote-components"
+      ],
+      "label": "remote components",
+      "group": "일반·확장",
+      "help": "Remote components to allow yt-dlp to fetch when required. This option is currently not needed if you are using an official executable or have the requisite version of the yt-dlp-ejs package installed. You can use this option multiple times to allow multiple components. Supported values: ejs:npm (external JavaScript components from npm), ejs:github (external JavaScript components from yt-dlp-ejs GitHub). By default, no remote components are allowed",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "COMPONENT",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--no-remote-components",
+      "flags": [
+        "--no-remote-components"
+      ],
+      "label": "no remote components",
+      "group": "일반·확장",
+      "help": "Disallow fetching of all remote components, including any previously allowed by --remote-components or defaults.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--flat-playlist",
+      "flags": [
+        "--flat-playlist"
+      ],
+      "label": "flat playlist",
+      "group": "일반·확장",
+      "help": "Do not extract a playlist's URL result entries; some entry metadata may be missing and downloading may be bypassed",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-flat-playlist",
+      "flags": [
+        "--no-flat-playlist"
+      ],
+      "label": "no flat playlist",
+      "group": "일반·확장",
+      "help": "Fully extract the videos of a playlist (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-live-from-start",
+      "flags": [
+        "--no-live-from-start"
+      ],
+      "label": "no live from start",
+      "group": "일반·확장",
+      "help": "Download livestreams from the current time (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-wait-for-video",
+      "flags": [
+        "--no-wait-for-video"
+      ],
+      "label": "no wait for video",
+      "group": "일반·확장",
+      "help": "Do not wait for scheduled streams (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--mark-watched",
+      "flags": [
+        "--mark-watched"
+      ],
+      "label": "mark watched",
+      "group": "일반·확장",
+      "help": "Mark videos watched (even with --simulate)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--no-mark-watched",
+      "flags": [
+        "--no-mark-watched"
+      ],
+      "label": "no mark watched",
+      "group": "일반·확장",
+      "help": "Do not mark videos watched (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--color",
+      "flags": [
+        "--color"
+      ],
+      "label": "color",
+      "group": "일반·확장",
+      "help": "Whether to emit color codes in output, optionally prefixed by the STREAM (stdout or stderr) to apply the setting to. Can be one of \"always\", \"auto\" (default), \"never\", or \"no_color\" (use non color terminal sequences). Use \"auto-tty\" or \"no_color-tty\" to decide based on terminal support only. Can be used multiple times",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[STREAM:]POLICY",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--compat-options",
+      "flags": [
+        "--compat-options"
+      ],
+      "label": "compat options",
+      "group": "일반·확장",
+      "help": "Options that can help keep compatibility with youtube-dl or youtube-dlc configurations by reverting some of the changes made in yt-dlp. See \"Differences in default behavior\" for details",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "OPTS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--alias",
+      "flags": [
+        "--alias"
+      ],
+      "label": "alias",
+      "group": "일반·확장",
+      "help": "Create aliases for an option string. Unless an alias starts with a dash \"-\", it is prefixed with \"--\". Arguments are parsed according to the Python string formatting mini-language. E.g. --alias get-audio,-X \"-S aext:{0},abr -x --audio-format {0}\" creates options \"--get-audio\" and \"-X\" that takes an argument (ARG0) and expands to \"-S aext:ARG0,abr -x --audio-format ARG0\". All defined aliases are listed in the --help output. Alias options can trigger more aliases; so be careful to avoid defining recursive options. As a safety measure, each alias may be triggered a maximum of 100 times. This option can be used multiple times",
+      "takesValue": true,
+      "nargs": 2,
+      "metavar": "ALIASES OPTIONS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": true,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--preset-alias",
+      "flags": [
+        "--preset-alias",
+        "-t"
+      ],
+      "label": "preset alias",
+      "group": "일반·확장",
+      "help": "Applies a predefined set of options. e.g. --preset-alias mp3. The following presets are available: mp3, aac, mp4, mkv, sleep. See the \"Preset Aliases\" section at the end for more info. This option can be used multiple times",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PRESET",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--socket-timeout",
+      "flags": [
+        "--socket-timeout"
+      ],
+      "label": "socket timeout",
+      "group": "네트워크",
+      "help": "Time to wait before giving up, in seconds",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SECONDS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--source-address",
+      "flags": [
+        "--source-address"
+      ],
+      "label": "source address",
+      "group": "네트워크",
+      "help": "Client-side IP address to bind to",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "IP",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--impersonate",
+      "flags": [
+        "--impersonate"
+      ],
+      "label": "impersonate",
+      "group": "네트워크",
+      "help": "Client to impersonate for requests. E.g. chrome, chrome-110, chrome:windows-10. Pass --impersonate=\"\" to impersonate any client. Note that forcing impersonation for all requests may have a detrimental impact on download speed and stability",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "CLIENT[:OS]",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--list-impersonate-targets",
+      "flags": [
+        "--list-impersonate-targets"
+      ],
+      "label": "list impersonate targets",
+      "group": "네트워크",
+      "help": "List available clients to impersonate.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--force-ipv4",
+      "flags": [
+        "--force-ipv4",
+        "-4"
+      ],
+      "label": "force ipv4",
+      "group": "네트워크",
+      "help": "Make all connections via IPv4",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--force-ipv6",
+      "flags": [
+        "--force-ipv6",
+        "-6"
+      ],
+      "label": "force ipv6",
+      "group": "네트워크",
+      "help": "Make all connections via IPv6",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--enable-file-urls",
+      "flags": [
+        "--enable-file-urls"
+      ],
+      "label": "enable file urls",
+      "group": "네트워크",
+      "help": "Enable file:// URLs. This is disabled by default for security reasons.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--geo-verification-proxy",
+      "flags": [
+        "--geo-verification-proxy"
+      ],
+      "label": "geo verification proxy",
+      "group": "지역 설정",
+      "help": "Use this proxy to verify the IP address for some geo-restricted sites. The default proxy specified by --proxy (or none, if the option is not present) is used for the actual downloading",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "URL",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--xff",
+      "flags": [
+        "--xff"
+      ],
+      "label": "xff",
+      "group": "지역 설정",
+      "help": "How to fake X-Forwarded-For HTTP header to try bypassing geographic restriction. One of \"default\" (only when known to be useful), \"never\", an IP block in CIDR notation, or a two-letter ISO 3166-2 country code",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--min-filesize",
+      "flags": [
+        "--min-filesize"
+      ],
+      "label": "min filesize",
+      "group": "항목·필터",
+      "help": "Abort download if filesize is smaller than SIZE, e.g. 50k or 44.6M",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SIZE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--max-filesize",
+      "flags": [
+        "--max-filesize"
+      ],
+      "label": "max filesize",
+      "group": "항목·필터",
+      "help": "Abort download if filesize is larger than SIZE, e.g. 50k or 44.6M",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SIZE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--date",
+      "flags": [
+        "--date"
+      ],
+      "label": "date",
+      "group": "항목·필터",
+      "help": "Download only videos uploaded on this date. The date can be \"YYYYMMDD\" or in the format [now|today|yesterday][-N[day|week|month|year]]. E.g. \"--date today-2weeks\" downloads only videos uploaded on the same day two weeks ago",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "DATE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-match-filters",
+      "flags": [
+        "--no-match-filters"
+      ],
+      "label": "no match filters",
+      "group": "항목·필터",
+      "help": "Do not use any --match-filters (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--break-match-filters",
+      "flags": [
+        "--break-match-filters"
+      ],
+      "label": "break match filters",
+      "group": "항목·필터",
+      "help": "Same as \"--match-filters\" but stops the download process when a video is rejected",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FILTER",
+      "choices": [],
+      "repeatable": true,
+      "action": "append",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-break-match-filters",
+      "flags": [
+        "--no-break-match-filters"
+      ],
+      "label": "no break match filters",
+      "group": "항목·필터",
+      "help": "Do not use any --break-match-filters (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-playlist",
+      "flags": [
+        "--no-playlist"
+      ],
+      "label": "no playlist",
+      "group": "항목·필터",
+      "help": "Download only the video, if the URL refers to a video and a playlist",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--yes-playlist",
+      "flags": [
+        "--yes-playlist"
+      ],
+      "label": "yes playlist",
+      "group": "항목·필터",
+      "help": "Download the playlist, if the URL refers to a video and a playlist",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--age-limit",
+      "flags": [
+        "--age-limit"
+      ],
+      "label": "age limit",
+      "group": "항목·필터",
+      "help": "Download only videos suitable for the given age",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "YEARS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-download-archive",
+      "flags": [
+        "--no-download-archive"
+      ],
+      "label": "no download archive",
+      "group": "항목·필터",
+      "help": "Do not use archive file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--max-downloads",
+      "flags": [
+        "--max-downloads"
+      ],
+      "label": "max downloads",
+      "group": "항목·필터",
+      "help": "Abort after downloading NUMBER files",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NUMBER",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--break-on-existing",
+      "flags": [
+        "--break-on-existing"
+      ],
+      "label": "break on existing",
+      "group": "항목·필터",
+      "help": "Stop the download process when encountering a file that is in the archive supplied with the --download-archive option",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-break-on-existing",
+      "flags": [
+        "--no-break-on-existing"
+      ],
+      "label": "no break on existing",
+      "group": "항목·필터",
+      "help": "Do not stop the download process when encountering a file that is in the archive (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--break-per-input",
+      "flags": [
+        "--break-per-input"
+      ],
+      "label": "break per input",
+      "group": "항목·필터",
+      "help": "Alters --max-downloads, --break-on-existing, --break-match-filters, and autonumber to reset per input URL",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-break-per-input",
+      "flags": [
+        "--no-break-per-input"
+      ],
+      "label": "no break per input",
+      "group": "항목·필터",
+      "help": "--break-on-existing and similar options terminates the entire download queue",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--skip-playlist-after-errors",
+      "flags": [
+        "--skip-playlist-after-errors"
+      ],
+      "label": "skip playlist after errors",
+      "group": "항목·필터",
+      "help": "Number of allowed failures until the rest of the playlist is skipped",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "N",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--throttled-rate",
+      "flags": [
+        "--throttled-rate"
+      ],
+      "label": "throttled rate",
+      "group": "다운로드",
+      "help": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted, e.g. 100K",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RATE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--file-access-retries",
+      "flags": [
+        "--file-access-retries"
+      ],
+      "label": "file access retries",
+      "group": "다운로드",
+      "help": "Number of times to retry on file access error (default is 3), or \"infinite\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RETRIES",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--fragment-retries",
+      "flags": [
+        "--fragment-retries"
+      ],
+      "label": "fragment retries",
+      "group": "다운로드",
+      "help": "Number of retries for a fragment (default is 10), or \"infinite\" (DASH, hlsnative and ISM)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RETRIES",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--retry-sleep",
+      "flags": [
+        "--retry-sleep"
+      ],
+      "label": "retry sleep",
+      "group": "다운로드",
+      "help": "Time to sleep between retries in seconds (optionally) prefixed by the type of retry (http (default), fragment, file_access, extractor) to apply the sleep to. EXPR can be a number, linear=START[:END[:STEP=1]] or exp=START[:END[:BASE=2]]. This option can be used multiple times to set the sleep for the different retry types, e.g. --retry-sleep linear=1::2 --retry-sleep fragment:exp=1:20",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[TYPE:]EXPR",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--skip-unavailable-fragments",
+      "flags": [
+        "--skip-unavailable-fragments",
+        "--no-abort-on-unavailable-fragments"
+      ],
+      "label": "skip unavailable fragments",
+      "group": "다운로드",
+      "help": "Skip unavailable fragments for DASH, hlsnative and ISM downloads (default) (Alias: --no-abort-on-unavailable-fragments)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--abort-on-unavailable-fragments",
+      "flags": [
+        "--abort-on-unavailable-fragments",
+        "--no-skip-unavailable-fragments"
+      ],
+      "label": "abort on unavailable fragments",
+      "group": "다운로드",
+      "help": "Abort download if a fragment is unavailable (Alias: --no-skip-unavailable-fragments)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--keep-fragments",
+      "flags": [
+        "--keep-fragments"
+      ],
+      "label": "keep fragments",
+      "group": "다운로드",
+      "help": "Keep downloaded fragments on disk after downloading is finished",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-keep-fragments",
+      "flags": [
+        "--no-keep-fragments"
+      ],
+      "label": "no keep fragments",
+      "group": "다운로드",
+      "help": "Delete downloaded fragments after downloading is finished (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--buffer-size",
+      "flags": [
+        "--buffer-size"
+      ],
+      "label": "buffer size",
+      "group": "다운로드",
+      "help": "Size of download buffer, e.g. 1024 or 16K (default is 1024)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SIZE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--resize-buffer",
+      "flags": [
+        "--resize-buffer"
+      ],
+      "label": "resize buffer",
+      "group": "다운로드",
+      "help": "The buffer size is automatically resized from an initial value of --buffer-size (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-resize-buffer",
+      "flags": [
+        "--no-resize-buffer"
+      ],
+      "label": "no resize buffer",
+      "group": "다운로드",
+      "help": "Do not automatically adjust the buffer size",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--http-chunk-size",
+      "flags": [
+        "--http-chunk-size"
+      ],
+      "label": "http chunk size",
+      "group": "다운로드",
+      "help": "Size of a chunk for chunk-based HTTP downloading, e.g. 10485760 or 10M (default is disabled). May be useful for bypassing bandwidth throttling imposed by a webserver (experimental)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SIZE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--playlist-random",
+      "flags": [
+        "--playlist-random"
+      ],
+      "label": "playlist random",
+      "group": "다운로드",
+      "help": "Download playlist videos in random order",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--lazy-playlist",
+      "flags": [
+        "--lazy-playlist"
+      ],
+      "label": "lazy playlist",
+      "group": "다운로드",
+      "help": "Process entries in the playlist as they are received. This disables n_entries, --playlist-random and --playlist-reverse",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-lazy-playlist",
+      "flags": [
+        "--no-lazy-playlist"
+      ],
+      "label": "no lazy playlist",
+      "group": "다운로드",
+      "help": "Process videos in the playlist only after the entire playlist is parsed (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--hls-use-mpegts",
+      "flags": [
+        "--hls-use-mpegts"
+      ],
+      "label": "hls use mpegts",
+      "group": "다운로드",
+      "help": "Use the mpegts container for HLS videos; allowing some players to play the video while downloading, and reducing the chance of file corruption if download is interrupted. This is enabled by default for live streams",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-hls-use-mpegts",
+      "flags": [
+        "--no-hls-use-mpegts"
+      ],
+      "label": "no hls use mpegts",
+      "group": "다운로드",
+      "help": "Do not use the mpegts container for HLS videos. This is default when not downloading live streams",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--downloader",
+      "flags": [
+        "--downloader",
+        "--external-downloader"
+      ],
+      "label": "downloader",
+      "group": "다운로드",
+      "help": "Name or path of the external downloader to use (optionally) prefixed by the protocols (http, ftp, m3u8, dash, rtmp) to use it for. Currently supports native, aria2c, axel, curl, ffmpeg, httpie, wget. You can use this option multiple times to set different downloaders for different protocols. E.g. --downloader aria2c --downloader \"dash,m3u8:native\" will use aria2c for http/ftp downloads, and the native downloader for dash/m3u8 downloads (Alias: --external-downloader)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[PROTO:]NAME",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--downloader-args",
+      "flags": [
+        "--downloader-args",
+        "--external-downloader-args"
+      ],
+      "label": "downloader args",
+      "group": "다운로드",
+      "help": "Give these arguments to the external downloader. Specify the downloader name and the arguments separated by a colon \":\". For ffmpeg, arguments can be passed to different positions using the same syntax as --postprocessor-args. You can use this option multiple times to give different arguments to different downloaders (Alias: --external-downloader-args)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NAME:ARGS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": true,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--batch-file",
+      "flags": [
+        "--batch-file",
+        "-a"
+      ],
+      "label": "batch file",
+      "group": "파일·인증",
+      "help": "File containing URLs to download (\"-\" for stdin), one URL per line. Lines starting with \"#\", \";\" or \"]\" are considered as comments and ignored",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-batch-file",
+      "flags": [
+        "--no-batch-file"
+      ],
+      "label": "no batch file",
+      "group": "파일·인증",
+      "help": "Do not read URLs from batch file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--output-na-placeholder",
+      "flags": [
+        "--output-na-placeholder"
+      ],
+      "label": "output na placeholder",
+      "group": "파일·인증",
+      "help": "Placeholder for unavailable fields in --output (default: \"NA\")",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "TEXT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--restrict-filenames",
+      "flags": [
+        "--restrict-filenames"
+      ],
+      "label": "restrict filenames",
+      "group": "파일·인증",
+      "help": "Restrict filenames to only ASCII characters, and avoid \"&\" and spaces in filenames",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-restrict-filenames",
+      "flags": [
+        "--no-restrict-filenames"
+      ],
+      "label": "no restrict filenames",
+      "group": "파일·인증",
+      "help": "Allow Unicode characters, \"&\" and spaces in filenames (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--windows-filenames",
+      "flags": [
+        "--windows-filenames"
+      ],
+      "label": "windows filenames",
+      "group": "파일·인증",
+      "help": "Force filenames to be Windows-compatible",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-windows-filenames",
+      "flags": [
+        "--no-windows-filenames"
+      ],
+      "label": "no windows filenames",
+      "group": "파일·인증",
+      "help": "Sanitize filenames only minimally",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--trim-filenames",
+      "flags": [
+        "--trim-filenames",
+        "--trim-file-names"
+      ],
+      "label": "trim filenames",
+      "group": "파일·인증",
+      "help": "Limit the filename length (excluding extension) to the specified number of characters",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "LENGTH",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-overwrites",
+      "flags": [
+        "--no-overwrites",
+        "-w"
+      ],
+      "label": "no overwrites",
+      "group": "파일·인증",
+      "help": "Do not overwrite any files",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--force-overwrites",
+      "flags": [
+        "--force-overwrites",
+        "--yes-overwrites"
+      ],
+      "label": "force overwrites",
+      "group": "파일·인증",
+      "help": "Overwrite all video and metadata files. This option includes --no-continue",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--no-force-overwrites",
+      "flags": [
+        "--no-force-overwrites"
+      ],
+      "label": "no force overwrites",
+      "group": "파일·인증",
+      "help": "Do not overwrite the video, but overwrite related files (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--continue",
+      "flags": [
+        "--continue",
+        "-c"
+      ],
+      "label": "continue",
+      "group": "파일·인증",
+      "help": "Resume partially downloaded files/fragments (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-continue",
+      "flags": [
+        "--no-continue"
+      ],
+      "label": "no continue",
+      "group": "파일·인증",
+      "help": "Do not resume partially downloaded fragments. If the file is not fragmented, restart download of the entire file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--part",
+      "flags": [
+        "--part"
+      ],
+      "label": "part",
+      "group": "파일·인증",
+      "help": "Use .part files instead of writing directly into output file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-part",
+      "flags": [
+        "--no-part"
+      ],
+      "label": "no part",
+      "group": "파일·인증",
+      "help": "Do not use .part files - write directly into output file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--mtime",
+      "flags": [
+        "--mtime"
+      ],
+      "label": "mtime",
+      "group": "파일·인증",
+      "help": "Use the Last-modified header to set the file modification time",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-mtime",
+      "flags": [
+        "--no-mtime"
+      ],
+      "label": "no mtime",
+      "group": "파일·인증",
+      "help": "Do not use the Last-modified header to set the file modification time (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-description",
+      "flags": [
+        "--write-description"
+      ],
+      "label": "write description",
+      "group": "파일·인증",
+      "help": "Write video description to a .description file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-description",
+      "flags": [
+        "--no-write-description"
+      ],
+      "label": "no write description",
+      "group": "파일·인증",
+      "help": "Do not write video description (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-info-json",
+      "flags": [
+        "--write-info-json"
+      ],
+      "label": "write info json",
+      "group": "파일·인증",
+      "help": "Write video metadata to a .info.json file (this may contain personal information)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-info-json",
+      "flags": [
+        "--no-write-info-json"
+      ],
+      "label": "no write info json",
+      "group": "파일·인증",
+      "help": "Do not write video metadata (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-playlist-metafiles",
+      "flags": [
+        "--write-playlist-metafiles"
+      ],
+      "label": "write playlist metafiles",
+      "group": "파일·인증",
+      "help": "Write playlist metadata in addition to the video metadata when using --write-info-json, --write-description etc. (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-playlist-metafiles",
+      "flags": [
+        "--no-write-playlist-metafiles"
+      ],
+      "label": "no write playlist metafiles",
+      "group": "파일·인증",
+      "help": "Do not write playlist metadata when using --write-info-json, --write-description etc.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--clean-info-json",
+      "flags": [
+        "--clean-info-json",
+        "--clean-infojson"
+      ],
+      "label": "clean info json",
+      "group": "파일·인증",
+      "help": "Remove some internal metadata such as filenames from the infojson (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-clean-info-json",
+      "flags": [
+        "--no-clean-info-json",
+        "--no-clean-infojson"
+      ],
+      "label": "no clean info json",
+      "group": "파일·인증",
+      "help": "Write all fields to the infojson",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--write-comments",
+      "flags": [
+        "--write-comments",
+        "--get-comments"
+      ],
+      "label": "write comments",
+      "group": "파일·인증",
+      "help": "Retrieve video comments to be placed in the infojson. The comments are fetched even without this option if the extraction is known to be quick (Alias: --get-comments)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-comments",
+      "flags": [
+        "--no-write-comments",
+        "--no-get-comments"
+      ],
+      "label": "no write comments",
+      "group": "파일·인증",
+      "help": "Do not retrieve video comments unless the extraction is known to be quick (Alias: --no-get-comments)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--load-info-json",
+      "flags": [
+        "--load-info-json"
+      ],
+      "label": "load info json",
+      "group": "파일·인증",
+      "help": "JSON file containing the video information (created with the \"--write-info-json\" option)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-cookies",
+      "flags": [
+        "--no-cookies"
+      ],
+      "label": "no cookies",
+      "group": "파일·인증",
+      "help": "Do not read/dump cookies from/to file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "FILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-cookies-from-browser",
+      "flags": [
+        "--no-cookies-from-browser"
+      ],
+      "label": "no cookies from browser",
+      "group": "파일·인증",
+      "help": "Do not load cookies from browser (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--cache-dir",
+      "flags": [
+        "--cache-dir"
+      ],
+      "label": "cache dir",
+      "group": "파일·인증",
+      "help": "Location in the filesystem where yt-dlp can store some downloaded information (such as client ids and signatures) permanently. By default ${XDG_CACHE_HOME}/yt-dlp",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "DIR",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-cache-dir",
+      "flags": [
+        "--no-cache-dir"
+      ],
+      "label": "no cache dir",
+      "group": "파일·인증",
+      "help": "Disable filesystem caching",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--rm-cache-dir",
+      "flags": [
+        "--rm-cache-dir"
+      ],
+      "label": "rm cache dir",
+      "group": "파일·인증",
+      "help": "Delete all filesystem cache files",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--write-thumbnail",
+      "flags": [
+        "--write-thumbnail"
+      ],
+      "label": "write thumbnail",
+      "group": "썸네일",
+      "help": "Write thumbnail image to disk",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-thumbnail",
+      "flags": [
+        "--no-write-thumbnail"
+      ],
+      "label": "no write thumbnail",
+      "group": "썸네일",
+      "help": "Do not write thumbnail image to disk (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-all-thumbnails",
+      "flags": [
+        "--write-all-thumbnails"
+      ],
+      "label": "write all thumbnails",
+      "group": "썸네일",
+      "help": "Write all thumbnail image formats to disk",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--list-thumbnails",
+      "flags": [
+        "--list-thumbnails"
+      ],
+      "label": "list thumbnails",
+      "group": "썸네일",
+      "help": "List available thumbnails of each video. Simulate unless --no-simulate is used",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-link",
+      "flags": [
+        "--write-link"
+      ],
+      "label": "write link",
+      "group": "인터넷 바로가기",
+      "help": "Write an internet shortcut file, depending on the current platform (.url, .webloc or .desktop). The URL may be cached by the OS",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-url-link",
+      "flags": [
+        "--write-url-link"
+      ],
+      "label": "write url link",
+      "group": "인터넷 바로가기",
+      "help": "Write a .url Windows internet shortcut. The OS caches the URL based on the file path",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-webloc-link",
+      "flags": [
+        "--write-webloc-link"
+      ],
+      "label": "write webloc link",
+      "group": "인터넷 바로가기",
+      "help": "Write a .webloc macOS internet shortcut",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--write-desktop-link",
+      "flags": [
+        "--write-desktop-link"
+      ],
+      "label": "write desktop link",
+      "group": "인터넷 바로가기",
+      "help": "Write a .desktop Linux internet shortcut",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--quiet",
+      "flags": [
+        "--quiet",
+        "-q"
+      ],
+      "label": "quiet",
+      "group": "조회·진단",
+      "help": "Activate quiet mode. If used with --verbose, print the log to stderr",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-quiet",
+      "flags": [
+        "--no-quiet"
+      ],
+      "label": "no quiet",
+      "group": "조회·진단",
+      "help": "Deactivate quiet mode. (Default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-warnings",
+      "flags": [
+        "--no-warnings"
+      ],
+      "label": "no warnings",
+      "group": "조회·진단",
+      "help": "Ignore warnings",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-simulate",
+      "flags": [
+        "--no-simulate"
+      ],
+      "label": "no simulate",
+      "group": "조회·진단",
+      "help": "Download the video even if printing/listing options are used",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ignore-no-formats-error",
+      "flags": [
+        "--ignore-no-formats-error"
+      ],
+      "label": "ignore no formats error",
+      "group": "조회·진단",
+      "help": "Ignore \"No video formats\" error. Useful for extracting metadata even if the videos are not actually available for download (experimental)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-ignore-no-formats-error",
+      "flags": [
+        "--no-ignore-no-formats-error"
+      ],
+      "label": "no ignore no formats error",
+      "group": "조회·진단",
+      "help": "Throw error when no downloadable video formats are found (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--print-to-file",
+      "flags": [
+        "--print-to-file"
+      ],
+      "label": "print to file",
+      "group": "조회·진단",
+      "help": "Append given template to the file. The values of WHEN and TEMPLATE are the same as that of --print. FILE uses the same syntax as the output template. This option can be used multiple times",
+      "takesValue": true,
+      "nargs": 2,
+      "metavar": "[WHEN:]TEMPLATE FILE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--dump-json",
+      "flags": [
+        "--dump-json",
+        "-j"
+      ],
+      "label": "dump json",
+      "group": "조회·진단",
+      "help": "Quiet, but print JSON information for each video. Simulate unless --no-simulate is used. See \"OUTPUT TEMPLATE\" for a description of available keys",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--force-write-archive",
+      "flags": [
+        "--force-write-archive",
+        "--force-write-download-archive",
+        "--force-download-archive"
+      ],
+      "label": "force write archive",
+      "group": "조회·진단",
+      "help": "Force download archive entries to be written as far as no errors occur, even if -s or another simulation option is used (Alias: --force-download-archive)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--newline",
+      "flags": [
+        "--newline"
+      ],
+      "label": "newline",
+      "group": "조회·진단",
+      "help": "Output progress bar as new lines",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-progress",
+      "flags": [
+        "--no-progress"
+      ],
+      "label": "no progress",
+      "group": "조회·진단",
+      "help": "Do not print progress bar",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--progress",
+      "flags": [
+        "--progress"
+      ],
+      "label": "progress",
+      "group": "조회·진단",
+      "help": "Show progress bar, even if in quiet mode",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--console-title",
+      "flags": [
+        "--console-title"
+      ],
+      "label": "console title",
+      "group": "조회·진단",
+      "help": "Display progress in console titlebar",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--progress-template",
+      "flags": [
+        "--progress-template"
+      ],
+      "label": "progress template",
+      "group": "조회·진단",
+      "help": "Template for progress outputs, optionally prefixed with one of \"download:\" (default), \"download-title:\" (the console title), \"postprocess:\",  or \"postprocess-title:\". The video's fields are accessible under the \"info\" key and the progress attributes are accessible under \"progress\" key. E.g. --console-title --progress-template \"download-title:%(info.id)s-%(progress.eta)s\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[TYPES:]TEMPLATE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--progress-delta",
+      "flags": [
+        "--progress-delta"
+      ],
+      "label": "progress delta",
+      "group": "조회·진단",
+      "help": "Time between progress output (default: 0)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SECONDS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--verbose",
+      "flags": [
+        "--verbose",
+        "-v"
+      ],
+      "label": "verbose",
+      "group": "조회·진단",
+      "help": "Print various debugging information",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--dump-pages",
+      "flags": [
+        "--dump-pages"
+      ],
+      "label": "dump pages",
+      "group": "조회·진단",
+      "help": "Print downloaded pages encoded using base64 to debug problems (very verbose)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--write-pages",
+      "flags": [
+        "--write-pages"
+      ],
+      "label": "write pages",
+      "group": "조회·진단",
+      "help": "Write downloaded intermediary pages to files in the current directory to debug problems",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--print-traffic",
+      "flags": [
+        "--print-traffic"
+      ],
+      "label": "print traffic",
+      "group": "조회·진단",
+      "help": "Display sent and read HTTP traffic",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--encoding",
+      "flags": [
+        "--encoding"
+      ],
+      "label": "encoding",
+      "group": "호환성",
+      "help": "Force the specified encoding (experimental)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "ENCODING",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--legacy-server-connect",
+      "flags": [
+        "--legacy-server-connect"
+      ],
+      "label": "legacy server connect",
+      "group": "호환성",
+      "help": "Explicitly allow HTTPS connection to servers that do not support RFC 5746 secure renegotiation",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-check-certificates",
+      "flags": [
+        "--no-check-certificates"
+      ],
+      "label": "no check certificates",
+      "group": "호환성",
+      "help": "Suppress HTTPS certificate validation",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--prefer-insecure",
+      "flags": [
+        "--prefer-insecure",
+        "--prefer-unsecure"
+      ],
+      "label": "prefer insecure",
+      "group": "호환성",
+      "help": "Use an unencrypted connection to retrieve information about the video",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--add-headers",
+      "flags": [
+        "--add-headers"
+      ],
+      "label": "add headers",
+      "group": "호환성",
+      "help": "Specify a custom HTTP header and its value, separated by a colon \":\". You can use this option multiple times",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FIELD:VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--bidi-workaround",
+      "flags": [
+        "--bidi-workaround"
+      ],
+      "label": "bidi workaround",
+      "group": "호환성",
+      "help": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sleep-requests",
+      "flags": [
+        "--sleep-requests"
+      ],
+      "label": "sleep requests",
+      "group": "호환성",
+      "help": "Number of seconds to sleep between requests during data extraction",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SECONDS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sleep-interval",
+      "flags": [
+        "--sleep-interval",
+        "--min-sleep-interval"
+      ],
+      "label": "sleep interval",
+      "group": "호환성",
+      "help": "Number of seconds to sleep before each download. This is the minimum time to sleep when used along with --max-sleep-interval (Alias: --min-sleep-interval)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SECONDS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--max-sleep-interval",
+      "flags": [
+        "--max-sleep-interval"
+      ],
+      "label": "max sleep interval",
+      "group": "호환성",
+      "help": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SECONDS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sleep-subtitles",
+      "flags": [
+        "--sleep-subtitles"
+      ],
+      "label": "sleep subtitles",
+      "group": "호환성",
+      "help": "Number of seconds to sleep before each subtitle download",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "SECONDS",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--format-sort-reset",
+      "flags": [
+        "--format-sort-reset"
+      ],
+      "label": "format sort reset",
+      "group": "영상 형식",
+      "help": "Disregard previous user specified sort order and reset to the default",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--format-sort-force",
+      "flags": [
+        "--format-sort-force",
+        "--S-force"
+      ],
+      "label": "format sort force",
+      "group": "영상 형식",
+      "help": "Force user specified sort order to have precedence over all fields, see \"Sorting Formats\" for more details (Alias: --S-force)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-format-sort-force",
+      "flags": [
+        "--no-format-sort-force"
+      ],
+      "label": "no format sort force",
+      "group": "영상 형식",
+      "help": "Some fields have precedence over the user specified sort order (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--video-multistreams",
+      "flags": [
+        "--video-multistreams"
+      ],
+      "label": "video multistreams",
+      "group": "영상 형식",
+      "help": "Allow multiple video streams to be merged into a single file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-video-multistreams",
+      "flags": [
+        "--no-video-multistreams"
+      ],
+      "label": "no video multistreams",
+      "group": "영상 형식",
+      "help": "Only one video stream is downloaded for each output file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--audio-multistreams",
+      "flags": [
+        "--audio-multistreams"
+      ],
+      "label": "audio multistreams",
+      "group": "영상 형식",
+      "help": "Allow multiple audio streams to be merged into a single file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-audio-multistreams",
+      "flags": [
+        "--no-audio-multistreams"
+      ],
+      "label": "no audio multistreams",
+      "group": "영상 형식",
+      "help": "Only one audio stream is downloaded for each output file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--prefer-free-formats",
+      "flags": [
+        "--prefer-free-formats"
+      ],
+      "label": "prefer free formats",
+      "group": "영상 형식",
+      "help": "Prefer video formats with free containers over non-free ones of the same quality. Use with \"-S ext\" to strictly prefer free containers irrespective of quality",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-prefer-free-formats",
+      "flags": [
+        "--no-prefer-free-formats"
+      ],
+      "label": "no prefer free formats",
+      "group": "영상 형식",
+      "help": "Don't give any special preference to free containers (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--check-formats",
+      "flags": [
+        "--check-formats"
+      ],
+      "label": "check formats",
+      "group": "영상 형식",
+      "help": "Make sure formats are selected only from those that are actually downloadable",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--check-all-formats",
+      "flags": [
+        "--check-all-formats"
+      ],
+      "label": "check all formats",
+      "group": "영상 형식",
+      "help": "Check all formats for whether they are actually downloadable",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-check-formats",
+      "flags": [
+        "--no-check-formats"
+      ],
+      "label": "no check formats",
+      "group": "영상 형식",
+      "help": "Do not check that the formats are actually downloadable",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--merge-output-format",
+      "flags": [
+        "--merge-output-format"
+      ],
+      "label": "merge output format",
+      "group": "영상 형식",
+      "help": "Containers that may be used when merging formats, separated by \"/\", e.g. \"mp4/mkv\". Ignored if no merge is required. (currently supported: avi, flv, mkv, mov, mp4, webm)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-subs",
+      "flags": [
+        "--no-write-subs",
+        "--no-write-srt"
+      ],
+      "label": "no write subs",
+      "group": "자막",
+      "help": "Do not write subtitle file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-write-auto-subs",
+      "flags": [
+        "--no-write-auto-subs",
+        "--no-write-automatic-subs"
+      ],
+      "label": "no write auto subs",
+      "group": "자막",
+      "help": "Do not write auto-generated subtitles (default) (Alias: --no-write-automatic-subs)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sub-format",
+      "flags": [
+        "--sub-format"
+      ],
+      "label": "sub format",
+      "group": "자막",
+      "help": "Subtitle format; accepts formats preference separated by \"/\", e.g. \"srt\" or \"ass/srt/best\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--twofactor",
+      "flags": [
+        "--twofactor",
+        "-2"
+      ],
+      "label": "twofactor",
+      "group": "인증",
+      "help": "Two-factor authentication code",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "TWOFACTOR",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--netrc",
+      "flags": [
+        "--netrc",
+        "-n"
+      ],
+      "label": "netrc",
+      "group": "인증",
+      "help": "Use .netrc authentication data",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--netrc-location",
+      "flags": [
+        "--netrc-location"
+      ],
+      "label": "netrc location",
+      "group": "인증",
+      "help": "Location of .netrc authentication data; either the path or its containing directory. Defaults to ~/.netrc",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PATH",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--netrc-cmd",
+      "flags": [
+        "--netrc-cmd"
+      ],
+      "label": "netrc cmd",
+      "group": "인증",
+      "help": "Command to execute to get the credentials for an extractor.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NETRC_CMD",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--video-password",
+      "flags": [
+        "--video-password"
+      ],
+      "label": "video password",
+      "group": "인증",
+      "help": "Video-specific password",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PASSWORD",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ap-mso",
+      "flags": [
+        "--ap-mso"
+      ],
+      "label": "ap mso",
+      "group": "인증",
+      "help": "Adobe Pass multiple-system operator (TV provider) identifier, use --ap-list-mso for a list of available MSOs",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "MSO",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ap-username",
+      "flags": [
+        "--ap-username"
+      ],
+      "label": "ap username",
+      "group": "인증",
+      "help": "Multiple-system operator account login",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "USERNAME",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ap-password",
+      "flags": [
+        "--ap-password"
+      ],
+      "label": "ap password",
+      "group": "인증",
+      "help": "Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PASSWORD",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ap-list-mso",
+      "flags": [
+        "--ap-list-mso"
+      ],
+      "label": "ap list mso",
+      "group": "인증",
+      "help": "List all supported multiple-system operators",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--client-certificate",
+      "flags": [
+        "--client-certificate"
+      ],
+      "label": "client certificate",
+      "group": "인증",
+      "help": "Path to client certificate file in PEM format. May include the private key",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "CERTFILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--client-certificate-key",
+      "flags": [
+        "--client-certificate-key"
+      ],
+      "label": "client certificate key",
+      "group": "인증",
+      "help": "Path to private key file for client certificate",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "KEYFILE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--client-certificate-password",
+      "flags": [
+        "--client-certificate-password"
+      ],
+      "label": "client certificate password",
+      "group": "인증",
+      "help": "Password for client certificate private key, if encrypted. If not provided, and the key is encrypted, yt-dlp will ask interactively",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "PASSWORD",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": true,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--postprocessor-args",
+      "flags": [
+        "--postprocessor-args",
+        "--ppa"
+      ],
+      "label": "postprocessor args",
+      "group": "후처리",
+      "help": "Give these arguments to the postprocessors. Specify the postprocessor/executable name and the arguments separated by a colon \":\" to give the argument to the specified postprocessor/executable. Supported PP are: Merger, ModifyChapters, SplitChapters, ExtractAudio, VideoRemuxer, VideoConvertor, Metadata, EmbedSubtitle, EmbedThumbnail, SubtitlesConvertor, ThumbnailsConvertor, FixupStretched, FixupM4a, FixupM3u8, FixupTimestamp and FixupDuration. The supported executables are: AtomicParsley, FFmpeg and FFprobe. You can also specify \"PP+EXE:ARGS\" to give the arguments to the specified executable only when being used by the specified postprocessor. Additionally, for ffmpeg/ffprobe, \"_i\"/\"_o\" can be appended to the prefix optionally followed by a number to pass the argument before the specified input/output file, e.g. --ppa \"Merger+ffmpeg_i1:-v quiet\". You can use this option multiple times to give different arguments to different postprocessors. (Alias: --ppa)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NAME:ARGS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": true,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--keep-video",
+      "flags": [
+        "--keep-video",
+        "-k"
+      ],
+      "label": "keep video",
+      "group": "후처리",
+      "help": "Keep the intermediate video file on disk after post-processing",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-keep-video",
+      "flags": [
+        "--no-keep-video"
+      ],
+      "label": "no keep video",
+      "group": "후처리",
+      "help": "Delete the intermediate video file after post-processing (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--post-overwrites",
+      "flags": [
+        "--post-overwrites"
+      ],
+      "label": "post overwrites",
+      "group": "후처리",
+      "help": "Overwrite post-processed files (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--no-post-overwrites",
+      "flags": [
+        "--no-post-overwrites"
+      ],
+      "label": "no post overwrites",
+      "group": "후처리",
+      "help": "Do not overwrite post-processed files",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-embed-subs",
+      "flags": [
+        "--no-embed-subs"
+      ],
+      "label": "no embed subs",
+      "group": "후처리",
+      "help": "Do not embed subtitles (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-embed-thumbnail",
+      "flags": [
+        "--no-embed-thumbnail"
+      ],
+      "label": "no embed thumbnail",
+      "group": "후처리",
+      "help": "Do not embed thumbnail (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-embed-metadata",
+      "flags": [
+        "--no-embed-metadata",
+        "--no-add-metadata"
+      ],
+      "label": "no embed metadata",
+      "group": "후처리",
+      "help": "Do not add metadata to file (default) (Alias: --no-add-metadata)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--embed-chapters",
+      "flags": [
+        "--embed-chapters",
+        "--add-chapters"
+      ],
+      "label": "embed chapters",
+      "group": "후처리",
+      "help": "Add chapter markers to the video file (Alias: --add-chapters)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-embed-chapters",
+      "flags": [
+        "--no-embed-chapters",
+        "--no-add-chapters"
+      ],
+      "label": "no embed chapters",
+      "group": "후처리",
+      "help": "Do not add chapter markers (default) (Alias: --no-add-chapters)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--embed-info-json",
+      "flags": [
+        "--embed-info-json"
+      ],
+      "label": "embed info json",
+      "group": "후처리",
+      "help": "Embed the infojson as an attachment to mkv/mka video files",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-embed-info-json",
+      "flags": [
+        "--no-embed-info-json"
+      ],
+      "label": "no embed info json",
+      "group": "후처리",
+      "help": "Do not embed the infojson as an attachment to the video file",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--parse-metadata",
+      "flags": [
+        "--parse-metadata"
+      ],
+      "label": "parse metadata",
+      "group": "후처리",
+      "help": "Parse additional metadata like title/artist from other fields; see \"MODIFYING METADATA\" for details. Supported values of \"WHEN\" are the same as that of --use-postprocessor (default: pre_process)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "[WHEN:]FROM:TO",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--replace-in-metadata",
+      "flags": [
+        "--replace-in-metadata"
+      ],
+      "label": "replace in metadata",
+      "group": "후처리",
+      "help": "Replace text in a metadata field using the given regex. This option can be used multiple times. Supported values of \"WHEN\" are the same as that of --use-postprocessor (default: pre_process)",
+      "takesValue": true,
+      "nargs": 3,
+      "metavar": "[WHEN:]FIELDS REGEX REPLACE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--xattrs",
+      "flags": [
+        "--xattrs",
+        "--xattr"
+      ],
+      "label": "xattrs",
+      "group": "후처리",
+      "help": "Write metadata to the video file's xattrs (using Dublin Core and XDG standards)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--concat-playlist",
+      "flags": [
+        "--concat-playlist"
+      ],
+      "label": "concat playlist",
+      "group": "후처리",
+      "help": "Concatenate videos in a playlist. One of \"never\", \"always\", or \"multi_video\" (default; only when the videos form a single show). All the video files must have the same codecs and number of streams to be concatenable. The \"pl_video:\" prefix can be used with \"--paths\" and \"--output\" to set the output filename for the concatenated files. See \"OUTPUT TEMPLATE\" for details",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "POLICY",
+      "choices": [
+        "never",
+        "always",
+        "multi_video"
+      ],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--fixup",
+      "flags": [
+        "--fixup"
+      ],
+      "label": "fixup",
+      "group": "후처리",
+      "help": "Automatically correct known faults of the file. One of never (do nothing), warn (only emit a warning), detect_or_warn (the default; fix the file if we can, warn otherwise), force (try fixing even if the file already exists)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "POLICY",
+      "choices": [
+        "never",
+        "ignore",
+        "warn",
+        "detect_or_warn",
+        "force"
+      ],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-exec",
+      "flags": [
+        "--no-exec"
+      ],
+      "label": "no exec",
+      "group": "후처리",
+      "help": "Remove any previously defined --exec",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--convert-subs",
+      "flags": [
+        "--convert-subs",
+        "--convert-sub",
+        "--convert-subtitles"
+      ],
+      "label": "convert subs",
+      "group": "후처리",
+      "help": "Convert the subtitles to another format (currently supported: ass, lrc, srt, vtt). Use \"--convert-subs none\" to disable conversion (default) (Alias: --convert-subtitles)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--convert-thumbnails",
+      "flags": [
+        "--convert-thumbnails"
+      ],
+      "label": "convert thumbnails",
+      "group": "후처리",
+      "help": "Convert the thumbnails to another format (currently supported: jpg, png, webp). You can specify multiple rules using similar syntax as \"--remux-video\". Use \"--convert-thumbnails none\" to disable conversion (default)",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-split-chapters",
+      "flags": [
+        "--no-split-chapters",
+        "--no-split-tracks"
+      ],
+      "label": "no split chapters",
+      "group": "후처리",
+      "help": "Do not split video based on chapters (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--remove-chapters",
+      "flags": [
+        "--remove-chapters"
+      ],
+      "label": "remove chapters",
+      "group": "후처리",
+      "help": "Remove chapters whose title matches the given regular expression. The syntax is the same as --download-sections. This option can be used multiple times",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "REGEX",
+      "choices": [],
+      "repeatable": true,
+      "action": "append",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-remove-chapters",
+      "flags": [
+        "--no-remove-chapters"
+      ],
+      "label": "no remove chapters",
+      "group": "후처리",
+      "help": "Do not remove any chapters from the file (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--force-keyframes-at-cuts",
+      "flags": [
+        "--force-keyframes-at-cuts"
+      ],
+      "label": "force keyframes at cuts",
+      "group": "후처리",
+      "help": "Force keyframes at cuts when downloading/splitting/removing sections. This is slow due to needing a re-encode, but the resulting video may have fewer artifacts around the cuts",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-force-keyframes-at-cuts",
+      "flags": [
+        "--no-force-keyframes-at-cuts"
+      ],
+      "label": "no force keyframes at cuts",
+      "group": "후처리",
+      "help": "Do not force keyframes around the chapters when cutting/splitting (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--use-postprocessor",
+      "flags": [
+        "--use-postprocessor"
+      ],
+      "label": "use postprocessor",
+      "group": "후처리",
+      "help": "The (case-sensitive) name of plugin postprocessors to be enabled, and (optionally) arguments to be passed to it, separated by a colon \":\". ARGS are a semicolon \";\" delimited list of NAME=VALUE. The \"when\" argument determines when the postprocessor is invoked. It can be one of \"pre_process\" (after video extraction), \"after_filter\" (after video passes filter), \"video\" (after --format; before --print/--output), \"before_dl\" (before each video download), \"post_process\" (after each video download; default), \"after_move\" (after moving the video file to its final location), \"after_video\" (after downloading and processing all formats of a video), or \"playlist\" (at end of playlist). This option can be used multiple times to add different postprocessors",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NAME[:ARGS]",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": true,
+      "hidden": false
+    },
+    {
+      "flag": "--sponsorblock-mark",
+      "flags": [
+        "--sponsorblock-mark"
+      ],
+      "label": "sponsorblock mark",
+      "group": "SponsorBlock",
+      "help": "SponsorBlock categories to create chapters for, separated by commas. Available categories are sponsor, intro, outro, selfpromo, preview, filler, interaction, music_offtopic, hook, poi_highlight, chapter, all and default (=all). You can prefix the category with a \"-\" to exclude it. See [1] for descriptions of the categories. E.g. --sponsorblock-mark all,-preview [1] https://wiki.sponsor.ajay.app/w/Segment_Categories",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "CATS",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sponsorblock-chapter-title",
+      "flags": [
+        "--sponsorblock-chapter-title"
+      ],
+      "label": "sponsorblock chapter title",
+      "group": "SponsorBlock",
+      "help": "An output template for the title of the SponsorBlock chapters created by --sponsorblock-mark. The only available fields are start_time, end_time, category, categories, name, category_names. Defaults to \"[SponsorBlock]: %(category_names)l\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "TEMPLATE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-sponsorblock",
+      "flags": [
+        "--no-sponsorblock"
+      ],
+      "label": "no sponsorblock",
+      "group": "SponsorBlock",
+      "help": "Disable both --sponsorblock-mark and --sponsorblock-remove",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--sponsorblock-api",
+      "flags": [
+        "--sponsorblock-api"
+      ],
+      "label": "sponsorblock api",
+      "group": "SponsorBlock",
+      "help": "SponsorBlock API location, defaults to https://sponsor.ajay.app",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "URL",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--extractor-retries",
+      "flags": [
+        "--extractor-retries"
+      ],
+      "label": "extractor retries",
+      "group": "추출기",
+      "help": "Number of retries for known extractor errors (default is 3), or \"infinite\"",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "RETRIES",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--allow-dynamic-mpd",
+      "flags": [
+        "--allow-dynamic-mpd",
+        "--no-ignore-dynamic-mpd"
+      ],
+      "label": "allow dynamic mpd",
+      "group": "추출기",
+      "help": "Process dynamic DASH manifests (default) (Alias: --no-ignore-dynamic-mpd)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--ignore-dynamic-mpd",
+      "flags": [
+        "--ignore-dynamic-mpd",
+        "--no-allow-dynamic-mpd"
+      ],
+      "label": "ignore dynamic mpd",
+      "group": "추출기",
+      "help": "Do not process dynamic DASH manifests (Alias: --no-allow-dynamic-mpd)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--hls-split-discontinuity",
+      "flags": [
+        "--hls-split-discontinuity"
+      ],
+      "label": "hls split discontinuity",
+      "group": "추출기",
+      "help": "Split HLS playlists to different formats at discontinuities such as ad breaks",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--no-hls-split-discontinuity",
+      "flags": [
+        "--no-hls-split-discontinuity"
+      ],
+      "label": "no hls split discontinuity",
+      "group": "추출기",
+      "help": "Do not split HLS playlists into different formats at discontinuities such as ad breaks (default)",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": false
+    },
+    {
+      "flag": "--playlist-reverse",
+      "flags": [
+        "--playlist-reverse"
+      ],
+      "label": "재생목록 역순",
+      "group": "다운로드",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--xattr-set-filesize",
+      "flags": [
+        "--xattr-set-filesize"
+      ],
+      "label": "xattr set filesize",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--dump-user-agent",
+      "flags": [
+        "--dump-user-agent"
+      ],
+      "label": "dump user agent",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--youtube-include-dash-manifest",
+      "flags": [
+        "--youtube-include-dash-manifest"
+      ],
+      "label": "youtube include dash manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-youtube-skip-dash-manifest",
+      "flags": [
+        "--no-youtube-skip-dash-manifest"
+      ],
+      "label": "no youtube skip dash manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--youtube-skip-dash-manifest",
+      "flags": [
+        "--youtube-skip-dash-manifest"
+      ],
+      "label": "youtube skip dash manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-youtube-include-dash-manifest",
+      "flags": [
+        "--no-youtube-include-dash-manifest"
+      ],
+      "label": "no youtube include dash manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--youtube-include-hls-manifest",
+      "flags": [
+        "--youtube-include-hls-manifest"
+      ],
+      "label": "youtube include hls manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-youtube-skip-hls-manifest",
+      "flags": [
+        "--no-youtube-skip-hls-manifest"
+      ],
+      "label": "no youtube skip hls manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--youtube-skip-hls-manifest",
+      "flags": [
+        "--youtube-skip-hls-manifest"
+      ],
+      "label": "youtube skip hls manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-youtube-include-hls-manifest",
+      "flags": [
+        "--no-youtube-include-hls-manifest"
+      ],
+      "label": "no youtube include hls manifest",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--youtube-print-sig-code",
+      "flags": [
+        "--youtube-print-sig-code"
+      ],
+      "label": "youtube print sig code",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--sponskrub",
+      "flags": [
+        "--sponskrub"
+      ],
+      "label": "sponskrub",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-sponskrub",
+      "flags": [
+        "--no-sponskrub"
+      ],
+      "label": "no sponskrub",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--sponskrub-cut",
+      "flags": [
+        "--sponskrub-cut"
+      ],
+      "label": "sponskrub cut",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-sponskrub-cut",
+      "flags": [
+        "--no-sponskrub-cut"
+      ],
+      "label": "no sponskrub cut",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--sponskrub-force",
+      "flags": [
+        "--sponskrub-force"
+      ],
+      "label": "sponskrub force",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-sponskrub-force",
+      "flags": [
+        "--no-sponskrub-force"
+      ],
+      "label": "no sponskrub force",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--prefer-avconv",
+      "flags": [
+        "--prefer-avconv"
+      ],
+      "label": "prefer avconv",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-prefer-ffmpeg",
+      "flags": [
+        "--no-prefer-ffmpeg"
+      ],
+      "label": "no prefer ffmpeg",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--prefer-ffmpeg",
+      "flags": [
+        "--prefer-ffmpeg"
+      ],
+      "label": "prefer ffmpeg",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-prefer-avconv",
+      "flags": [
+        "--no-prefer-avconv"
+      ],
+      "label": "no prefer avconv",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "-C",
+      "flags": [
+        "-C"
+      ],
+      "label": "C",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--call-home",
+      "flags": [
+        "--call-home"
+      ],
+      "label": "call home",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-call-home",
+      "flags": [
+        "--no-call-home"
+      ],
+      "label": "no call home",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--include-ads",
+      "flags": [
+        "--include-ads"
+      ],
+      "label": "include ads",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-include-ads",
+      "flags": [
+        "--no-include-ads"
+      ],
+      "label": "no include ads",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--write-annotations",
+      "flags": [
+        "--write-annotations"
+      ],
+      "label": "write annotations",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-write-annotations",
+      "flags": [
+        "--no-write-annotations"
+      ],
+      "label": "no write annotations",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--sponskrub-location",
+      "flags": [
+        "--sponskrub-location"
+      ],
+      "label": "sponskrub location",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "ARG",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--sponskrub-args",
+      "flags": [
+        "--sponskrub-args"
+      ],
+      "label": "sponskrub args",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "ARG",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--cn-verification-proxy",
+      "flags": [
+        "--cn-verification-proxy"
+      ],
+      "label": "cn verification proxy",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "ARG",
+      "choices": [],
+      "repeatable": true,
+      "action": "callback",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--force-generic-extractor",
+      "flags": [
+        "--force-generic-extractor"
+      ],
+      "label": "force generic extractor",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-colors",
+      "flags": [
+        "--no-colors",
+        "--no-colours"
+      ],
+      "label": "no colors",
+      "group": "일반·확장",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--geo-bypass",
+      "flags": [
+        "--geo-bypass"
+      ],
+      "label": "geo bypass",
+      "group": "지역 설정",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-geo-bypass",
+      "flags": [
+        "--no-geo-bypass"
+      ],
+      "label": "no geo bypass",
+      "group": "지역 설정",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--geo-bypass-country",
+      "flags": [
+        "--geo-bypass-country"
+      ],
+      "label": "geo bypass country",
+      "group": "지역 설정",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "CODE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--geo-bypass-ip-block",
+      "flags": [
+        "--geo-bypass-ip-block"
+      ],
+      "label": "geo bypass ip block",
+      "group": "지역 설정",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "IP_BLOCK",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--playlist-start",
+      "flags": [
+        "--playlist-start"
+      ],
+      "label": "playlist start",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NUMBER",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--playlist-end",
+      "flags": [
+        "--playlist-end"
+      ],
+      "label": "playlist end",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NUMBER",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--match-title",
+      "flags": [
+        "--match-title"
+      ],
+      "label": "match title",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "REGEX",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--reject-title",
+      "flags": [
+        "--reject-title"
+      ],
+      "label": "reject title",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "REGEX",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--min-views",
+      "flags": [
+        "--min-views"
+      ],
+      "label": "min views",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "COUNT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--max-views",
+      "flags": [
+        "--max-views"
+      ],
+      "label": "max views",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "COUNT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--break-on-reject",
+      "flags": [
+        "--break-on-reject"
+      ],
+      "label": "break on reject",
+      "group": "항목·필터",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--test",
+      "flags": [
+        "--test"
+      ],
+      "label": "test",
+      "group": "다운로드",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-playlist-reverse",
+      "flags": [
+        "--no-playlist-reverse"
+      ],
+      "label": "no playlist reverse",
+      "group": "다운로드",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--hls-prefer-native",
+      "flags": [
+        "--hls-prefer-native"
+      ],
+      "label": "hls prefer native",
+      "group": "다운로드",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--hls-prefer-ffmpeg",
+      "flags": [
+        "--hls-prefer-ffmpeg"
+      ],
+      "label": "hls prefer ffmpeg",
+      "group": "다운로드",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--id",
+      "flags": [
+        "--id"
+      ],
+      "label": "id",
+      "group": "파일·인증",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--autonumber-size",
+      "flags": [
+        "--autonumber-size"
+      ],
+      "label": "autonumber size",
+      "group": "파일·인증",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NUMBER",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--autonumber-start",
+      "flags": [
+        "--autonumber-start"
+      ],
+      "label": "autonumber start",
+      "group": "파일·인증",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "NUMBER",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-url",
+      "flags": [
+        "--get-url",
+        "-g"
+      ],
+      "label": "get url",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-title",
+      "flags": [
+        "--get-title",
+        "-e"
+      ],
+      "label": "get title",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-id",
+      "flags": [
+        "--get-id"
+      ],
+      "label": "get id",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-thumbnail",
+      "flags": [
+        "--get-thumbnail"
+      ],
+      "label": "get thumbnail",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-description",
+      "flags": [
+        "--get-description"
+      ],
+      "label": "get description",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-duration",
+      "flags": [
+        "--get-duration"
+      ],
+      "label": "get duration",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-filename",
+      "flags": [
+        "--get-filename"
+      ],
+      "label": "get filename",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--get-format",
+      "flags": [
+        "--get-format"
+      ],
+      "label": "get format",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--print-json",
+      "flags": [
+        "--print-json"
+      ],
+      "label": "print json",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--load-pages",
+      "flags": [
+        "--load-pages"
+      ],
+      "label": "load pages",
+      "group": "조회·진단",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--user-agent",
+      "flags": [
+        "--user-agent"
+      ],
+      "label": "user agent",
+      "group": "호환성",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "UA",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--referer",
+      "flags": [
+        "--referer"
+      ],
+      "label": "referer",
+      "group": "호환성",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "URL",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--all-formats",
+      "flags": [
+        "--all-formats"
+      ],
+      "label": "all formats",
+      "group": "영상 형식",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--list-formats-as-table",
+      "flags": [
+        "--list-formats-as-table"
+      ],
+      "label": "list formats as table",
+      "group": "영상 형식",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--list-formats-old",
+      "flags": [
+        "--list-formats-old",
+        "--no-list-formats-as-table"
+      ],
+      "label": "list formats old",
+      "group": "영상 형식",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--allow-unplayable-formats",
+      "flags": [
+        "--allow-unplayable-formats"
+      ],
+      "label": "allow unplayable formats",
+      "group": "영상 형식",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--no-allow-unplayable-formats",
+      "flags": [
+        "--no-allow-unplayable-formats"
+      ],
+      "label": "no allow unplayable formats",
+      "group": "영상 형식",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_false",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--all-subs",
+      "flags": [
+        "--all-subs"
+      ],
+      "label": "all subs",
+      "group": "자막",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_true",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--metadata-from-title",
+      "flags": [
+        "--metadata-from-title"
+      ],
+      "label": "metadata from title",
+      "group": "후처리",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "FORMAT",
+      "choices": [],
+      "repeatable": false,
+      "action": "store",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    },
+    {
+      "flag": "--exec-before-download",
+      "flags": [
+        "--exec-before-download"
+      ],
+      "label": "exec before download",
+      "group": "후처리",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": true,
+      "nargs": 1,
+      "metavar": "CMD",
+      "choices": [],
+      "repeatable": true,
+      "action": "append",
+      "sensitive": true,
+      "risk": true,
+      "hidden": true
+    },
+    {
+      "flag": "--no-exec-before-download",
+      "flags": [
+        "--no-exec-before-download"
+      ],
+      "label": "no exec before download",
+      "group": "후처리",
+      "help": "Deprecated or compatibility option. See engine documentation.",
+      "takesValue": false,
+      "nargs": 0,
+      "metavar": "VALUE",
+      "choices": [],
+      "repeatable": false,
+      "action": "store_const",
+      "sensitive": false,
+      "risk": false,
+      "hidden": true
+    }
+  ],
+  "optionCount": 323,
+  "flagCount": 394
+}
