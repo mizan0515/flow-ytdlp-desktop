@@ -1,0 +1,58 @@
+name: Publish Windows release
+
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flow-windows-v1.1.0
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Verify source and frontend
+        run: |
+          python tools/check_publication.py
+          if ($LASTEXITCODE -ne 0) { throw 'Publication manifest check failed' }
+          node --test tests/frontend.test.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Frontend checks failed' }
+      - name: Prepare official components
+        run: |
+          python tools/prepare.py
+          if ($LASTEXITCODE -ne 0) { throw 'Official component preparation failed' }
+      - name: Build Windows app
+        run: ./build.ps1
+      - name: Verify actual downloads and media processing
+        run: |
+          python tests/run.py
+          if ($LASTEXITCODE -ne 0) { throw 'Engine integration checks failed' }
+      - name: Package GUI and SHA256
+        run: |
+          python tools/package.py
+          if ($LASTEXITCODE -ne 0) { throw 'Packaging checks failed' }
+      - name: Publish v1.1.0 and attach verified assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create v1.1.0 release/Flow-1.1-Windows.zip release/SHA256SUMS.txt --target $env:GITHUB_SHA --title 'Flow 1.1 — Windows 타임라인 다운로드' --notes-file docs/releases/v1.1.0.md --latest
+          if ($LASTEXITCODE -ne 0) { throw 'GitHub release publishing failed' }
+
